@@ -1,0 +1,44 @@
+package PackageB;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Hienthisanpham {
+	public static void main(String[] args) {
+		SanPham a = new SanPham(1, " cam ", 10.5, 3);
+		SanPham b = new SanPham(2, "Xoai", 13.0, 2);
+		SanPham c = new SanPham(3, "Quyt", 12.5, 6);
+		SanPham d = new SanPham(4, "Dua", 10.7, 1);
+		List<SanPham> sp = new ArrayList<>();
+		sp.add(a);
+		sp.add(b);
+		sp.add(c);
+		sp.add(d);
+		for (SanPham sv : sp) {
+			sv.inThongTin();
+			System.out.println("Thành tiền :" + sv.thanhTien());
+		}
+		
+		System.out.println("-----Sắp xếp------");
+	
+		SanPham temp=null;
+		
+		for(int i=0; i<sp.size()-1 ;i++) {
+			
+			for(int j=i+1; j<sp.size(); j++) {
+				if(sp.get(i).thanhTien()<sp.get(j).thanhTien()) {
+					temp = sp.get(i);
+					sp.set(i, sp.get(j));
+					sp.set(j, temp);
+					
+				}
+			}
+		}
+		
+		for (SanPham s : sp) {
+			s.inThongTin();
+			System.out.println("Thành tiền :" + s.thanhTien());
+			System.out.println("---");
+		}
+	}
+}
